@@ -9,10 +9,18 @@
     else if(is_page() || is_archive() || is_tag() || is_category())
         - noSticky = theme.aside.page.noSticky.split(',')
         - Sticky = theme.aside.page.Sticky.split(',')
-    each item in noSticky
-        include ./asideSwitch.pug
+    if(is_post())
+        each item in noSticky
+            include ./asideSwitchforPost.pug
+    else
+        each item in noSticky
+            include ./asideSwitch.pug
     .sticky_layout
         if showToc
             include ./asideToc.pug
-        each item in Sticky
-            include ./asideSwitch.pug
+        if(is_post())
+            each item in Sticky
+                include ./asideSwitchforPost.pug
+        else
+            each item in Sticky
+                include ./asideSwitch.pug
