@@ -11,7 +11,7 @@
 }
 
 .snackbar-container {
-    transition: .5s;
+    transition: .1s;
     font-size: 14px;
     position: fixed;
     align-items: center;
@@ -22,6 +22,7 @@
     opacity: 0;
     z-index: 9999;
     /* background: var(--efu-lighttext) !important; */
+    background: rgba(54,54,54,.9) !important; /* 修改背景色 */
     color: var(--efu-card-bg);
     border-radius: 12px; /* 改为圆角 */
     display: flex;
@@ -55,7 +56,7 @@
     padding: 4px 6px;
     font-weight: 700;
     border-radius: 8px;
-    transition: .3s;
+    transition: .2s;
     border: var(--style-border)
 }
 

@@ -489,28 +489,27 @@ const addHighlight = () => {
   const limitEle = limit ? `<i class="solitude fas fa-angles-down"></i>` : '<i></i>';
   
   const alertInfo = (ele, text) => utils.snackbarShow(text, false, 2000); //使用snackbar提示
-  const toastInfo = (ele, text) => {
-    // 创建提示元素
-    const toastbar = document.createElement('div');
-    toastbar.className = 'toasBbar-whb';
-    toastbar.innerText = text;
+  const toastInfo = (ele, text) => { // add by whb
+    const toastbar = document.createElement('div'); // 创建
+    toastbar.className = 'toasBbar-whb';            //
+    toastbar.innerText = text;                      //
 
-    // 插入到页面
-    document.body.appendChild(toastbar);
+    document.body.appendChild(toastbar); // 插入到页面
+    const rect = ele.getBoundingClientRect(); // 获取元素的位置信息
 
-    // 获取 `ele` 的位置
-    const rect = ele.getBoundingClientRect();
-
-    // 设置 `toastbar` 的位置
-    toastbar.style.position = 'absolute';
-    toastbar.style.top = `${rect.top + window.scrollY - toastbar.offsetHeight - 8}px`; // 紧贴元素上方，8px 间距
+    toastbar.style.position = 'absolute'; // 设置新插入元素位置
+    toastbar.style.padding = '6px 12px'; // 添加内边距
+    toastbar.style.borderRadius = '12px'; // 添加圆角
+    toastbar.style.background = '#333'; // 设置背景色
+    toastbar.style.color = '#fff'; // 设置字体颜色
+    toastbar.style.fontSize = '14px'; // 设置字体大小
+    toastbar.style.fontWeight = 'bold'; // 设置字体粗细
+    toastbar.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // 添加阴影
+    toastbar.style.top = `${rect.top + window.scrollY - toastbar.offsetHeight - 12}px`; // 紧贴元素上方，12px 间距
     toastbar.style.left = `${rect.left + window.scrollX + (rect.width / 2) - (toastbar.offsetWidth / 2)}px`; // 居中对齐
 
-    // 显示 1 秒后移除
-    setTimeout(() => {
-        toastbar.remove();
-    }, 1000);
-};
+    setTimeout(() => {toastbar.remove();}, 1000); // 1s 后移除
+  };
   
   const copyFn = (e) => { // 点击复制按钮的调用函数
     const $buttonParent = e.parentNode;
@@ -523,7 +522,7 @@ const addHighlight = () => {
     selection.addRange(range);
     document.execCommand('copy'); // 使用 execCommand('copy') 将选中的内容复制到系统剪贴板。
     alertInfo(e.lastChild, GLOBAL_CONFIG.lang.copy.success);
-    toastInfo(e.lastChild, GLOBAL_CONFIG.lang.copy.success);
+    // toastInfo(e.lastChild, GLOBAL_CONFIG.lang.copy.success);
     selection.removeAllRanges();
     $buttonParent.classList.remove('copy-true');
   };
