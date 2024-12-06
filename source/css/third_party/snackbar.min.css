@@ -1,1 +1,96 @@
-@keyframes snackbar-progress{0%{width:0}to{width:100%}}.snackbar-container{transition:.5s;font-size:14px;position:fixed;align-items:center;line-height:22px;padding:18px 24px;bottom:-100px;top:-100px;opacity:0;z-index:9999;background:var(--efu-lighttext)!important;color:var(--efu-card-bg);border-radius:0;display:flex;justify-content:center;max-width:none;min-width:100%;margin:0;left:0;height:60px;transform:none}.snackbar-container p{color:var(--efu-card-bg)!important;font-weight:700!important;text-align:center;font-size:.8rem!important;display:flex;justify-content:center}.snackbar-container .action{display:inline-block;font-size:inherit;margin:0 0 0 24px;min-width:min-content;cursor:pointer;color:var(--efu-card-bg)!important;background:var(--efu-lighttext)!important;padding:4px 6px;font-weight:700;border-radius:8px;transition:.3s;border:var(--style-border)}.snackbar-container .action:hover{background:var(--efu-card-bg)!important;color:var(--efu-lighttext)!important}.snackbar-container:after{position:absolute;width:0;height:100%;left:0;top:0;background:var(--efu-white);opacity:.1;content:"";animation:snackbar-progress var(--efu-snackbar-time) linear forwards;pointer-events:none}.snackbar-pos.top-center,.snackbar-pos.top-left{bottom:auto;top:0;left:0}.snackbar-pos.top-right{bottom:auto;top:0;right:0}
+/* TODO: 复制代码的操作单独设置，需要修改js/pug文件，实现的效果就是复制成功的气泡出现在复制框的上方 */
+
+@keyframes snackbar-progress {
+    0% {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+.snackbar-container {
+    transition: .5s;
+    font-size: 14px;
+    position: fixed;
+    align-items: center;
+    line-height: 22px;
+    padding: 18px 24px;
+    bottom: -100px;
+    top: -100px;
+    opacity: 0;
+    z-index: 9999;
+    /* background: var(--efu-lighttext) !important; */
+    color: var(--efu-card-bg);
+    border-radius: 12px; /* 改为圆角 */
+    display: flex;
+    justify-content: center;
+    max-width: auto; /* 不限制宽度 */
+    min-width: unset; /* 取消最小宽度限制 */
+    margin: 0 auto; /* 使其水平居中 */
+    left: 50%; /* 水平居中 */
+    height: 40px;
+    transform: translateX(-50%); /* 调整中心点到视口中间 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 增加阴影以突显气泡 */
+}
+
+.snackbar-container p {
+    color: var(--efu-card-bg) !important;
+    font-weight: 700 !important;
+    text-align: center;
+    font-size: .8rem !important;
+    display: flex;
+    justify-content: center
+}
+
+.snackbar-container .action {
+    display: inline-block;
+    font-size: inherit;
+    margin: 0 0 0 24px;
+    min-width: auto; /* 宽度根据内容自动调整 */
+    cursor: pointer;
+    color: var(--efu-card-bg) !important;
+    background: var(--efu-lighttext) !important;
+    padding: 4px 6px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: .3s;
+    border: var(--style-border)
+}
+
+.snackbar-container .action:hover {
+    background: var(--efu-card-bg) !important;
+    color: var(--efu-lighttext) !important
+}
+
+.snackbar-container:after {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--efu-white);
+    opacity: .1;
+    content: "";
+    /* animation: snackbar-progress var(--efu-snackbar-time) linear forwards; */
+    pointer-events: none
+}
+
+.snackbar-pos.top-center {
+    top: 5px; /* 明确位置 */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* .snackbar-pos.top-left {
+    bottom: auto;
+    top: 0;
+    left: 0
+}
+
+.snackbar-pos.top-right {
+    bottom: auto;
+    top: 0;
+    right: 0
+} */
